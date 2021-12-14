@@ -37,7 +37,7 @@
     },
     "AWSRegionArch2AMI": {
       "us-east-1": {
-        "HVM64": "ami-0080e4c5bc078760e",
+        "HVM64": "ami-032930428bf1abbff",
         "HVMG2": "ami-0aeb704d503081ea6"
       }
     }
@@ -46,29 +46,19 @@
     "EC2Instance": {
       "Type": "AWS::EC2::Instance",
       "Properties": {
-        "InstanceType": {
-          "Ref": "InstanceType"
-        },
+        "InstanceType": { "Ref": "InstanceType" },
         "SecurityGroups": [
-          {
-            "Ref": "InstanceSecurityGroup"
-          }
+          { "Ref": "InstanceSecurityGroup" }
         ],
-        "KeyName": {
-          "Ref": "KeyName"
-        },
+        "KeyName": { "Ref": "KeyName" },
         "ImageId": {
           "Fn::FindInMap": [
             "AWSRegionArch2AMI",
-            {
-              "Ref": "AWS::Region"
-            },
+            { "Ref": "AWS::Region" },
             {
               "Fn::FindInMap": [
                 "AWSInstanceType2Arch",
-                {
-                  "Ref": "InstanceType"
-                },
+                { "Ref": "InstanceType" },
                 "Arch"
               ]
             }
